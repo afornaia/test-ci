@@ -1,0 +1,11 @@
+language: generic
+
+script:
+  - test $(grep '<div class="item">' index.html | wc -l) -le 6  # no more than 6 items (less than equals 6)
+  - test $(grep '<div class="item">' index.html | wc -l) -ge 3  # at least 3 items (greater than equals 3)
+
+deploy:
+  provider: pages
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
