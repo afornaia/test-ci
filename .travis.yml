@@ -1,9 +1,8 @@
 language: generic
 
 script:
-  - echo "Step 1"
-  - echo "Step 2"
-  - echo "Step 3"
+  - test $(grep '<div class="item">' index.html | wc -l) -lte 6 # no more than 6 items
+  - test $(grep '<div class="item">' index.html | wc -l) -gte 3  # at least 3 items
 
 deploy:
   provider: pages
